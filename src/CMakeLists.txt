@@ -1,0 +1,1 @@
+add_library(FeatherFifo FeatherFifo.cpp)
