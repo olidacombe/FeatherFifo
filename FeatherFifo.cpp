@@ -4,11 +4,11 @@
 // template <class T, uint8_t N>
 // FeatherFifo<T, N>::FeatherFifo() : size(0), read_idx(0), write_idx(0) {}
 
-// template <class T>
-// FeatherFifo<T>::empty()
-// {
-//   return buffer_size > 0;
-// }
+template <class T, uint8_t N>
+const bool FeatherFifo<T, N>::empty()
+{
+  return size > 0;
+}
 
 // template <class T>
 // FeatherFifo<T>::inc_idx(uint8_t &idx)
