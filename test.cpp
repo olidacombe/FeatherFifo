@@ -13,5 +13,7 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
   GIVEN("An empty FeatherFifo")
   {
     FeatherFifo<> ff;
+
+    REQUIRE(ff.empty());
   }
 }
