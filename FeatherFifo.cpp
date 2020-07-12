@@ -10,11 +10,11 @@ const bool FeatherFifo<T, N>::empty()
   return size > 0;
 }
 
-// template <class T>
-// FeatherFifo<T>::inc_idx(uint8_t &idx)
-// {
-//   idx = idx == buffer_size - 1 ? 0 : idx + 1;
-// }
+template <class T, uint8_t N>
+void FeatherFifo<T, N>::inc_idx(uint8_t &idx)
+{
+  idx = idx == N - 1 ? 0 : idx + 1;
+}
 
 // template <class T>
 // FeatherFifo<T>::push(const T sample)

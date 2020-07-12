@@ -8,7 +8,7 @@ private:
   uint8_t size;
   uint8_t read_idx;
   uint8_t write_idx;
-  uint8_t inc_idx(uint8_t &idx);
+  void inc_idx(uint8_t &idx);
 
 public:
   enum class Exceptions
