@@ -62,6 +62,7 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
           REQUIRE(ff.pop() == TSample::C);
           REQUIRE(ff.pop() == TSample::A);
           REQUIRE(ff.pop() == TSample::B);
+          REQUIRE(!ff.empty());
         }
       }
     }

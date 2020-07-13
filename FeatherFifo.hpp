@@ -27,6 +27,8 @@ public:
   {
     if (size < N)
       size++;
+    else
+      inc_idx(read_idx);
     buffer[write_idx] = sample;
     inc_idx(write_idx);
   };
