@@ -12,7 +12,7 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
   };
   GIVEN("An empty FeatherFifo")
   {
-    FeatherFifo<> ff;
+    FeatherFifo<TSample, 4> ff;
 
     REQUIRE(ff.empty());
 
@@ -21,6 +21,15 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
       THEN("exception is thrown")
       {
         REQUIRE_THROWS(ff.pop());
+      }
+    }
+
+    WHEN("a value is pushed")
+    {
+      ff.push(TSample::A);
+      THEN("empty() returns false")
+      {
+        REQUIRE(!ff.empty());
       }
     }
   }
