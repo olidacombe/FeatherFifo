@@ -21,12 +21,12 @@ public:
   FeatherFifo() : size(0), read_idx(0), write_idx(0){};
   const bool empty()
   {
-    return size > 0;
+    return size == 0;
   };
   void push(const T sample)
   {
-    if (size < buffer_size)
-      buffer_size++;
+    if (size < N)
+      size++;
     buffer[write_idx] = sample;
     inc_idx(write_idx);
   };
@@ -34,7 +34,8 @@ public:
   {
     if (empty())
       throw 0;
-    const value = buffer[read_idx];
+    const T value = buffer[read_idx];
     inc_idx(read_idx);
+    return value;
   };
 };
