@@ -15,5 +15,13 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
     FeatherFifo<> ff;
 
     REQUIRE(ff.empty());
+
+    WHEN("pop() is attempted")
+    {
+      THEN("exception is thrown")
+      {
+        REQUIRE_THROWS(ff.pop());
+      }
+    }
   }
 }
