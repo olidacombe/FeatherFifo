@@ -8,7 +8,10 @@ private:
   uint8_t size;
   uint8_t read_idx;
   uint8_t write_idx;
-  void inc_idx(uint8_t &idx);
+  void inc_idx(uint8_t &idx)
+  {
+    idx = idx == N - 1 ? 0 : idx + 1;
+  };
 
 public:
   enum class Exceptions
@@ -16,7 +19,22 @@ public:
     POP_FROM_EMPTY
   };
   FeatherFifo() : size(0), read_idx(0), write_idx(0){};
-  const bool empty();
-  void push(const T);
-  const T pop();
+  const bool empty()
+  {
+    return size > 0;
+  };
+  void push(const T sample)
+  {
+    if (size < buffer_size)
+      buffer_size++;
+    buffer[write_idx] = sample;
+    inc_idx(write_idx);
+  };
+  const T pop()
+  {
+    if (empty())
+      throw 0;
+    const value = buffer[read_idx];
+    inc_idx(read_idx);
+  };
 };
