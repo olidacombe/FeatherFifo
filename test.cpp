@@ -32,5 +32,38 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
         REQUIRE(!ff.empty());
       }
     }
+
+    WHEN("values are pushed")
+    {
+      ff.push(TSample::A);
+      ff.push(TSample::B);
+      ff.push(TSample::C);
+      THEN("values are popped in fifo order")
+      {
+        REQUIRE(ff.pop() == TSample::A);
+        REQUIRE(ff.pop() == TSample::B);
+        REQUIRE(ff.pop() == TSample::C);
+        REQUIRE(!ff.empty());
+      }
+    }
+
+    WHEN("the buffer is full")
+    {
+      ff.push(TSample::A);
+      ff.push(TSample::B);
+      ff.push(TSample::C);
+      ff.push(TSample::A);
+      WHEN("a further value is pushed")
+      {
+        ff.push(TSample::B);
+        THEN("the first value is evicted")
+        {
+          REQUIRE(ff.pop() == TSample::B);
+          REQUIRE(ff.pop() == TSample::C);
+          REQUIRE(ff.pop() == TSample::A);
+          REQUIRE(ff.pop() == TSample::B);
+        }
+      }
+    }
   }
 }
