@@ -1,2 +1,2 @@
-add_executable(test test.cpp ${PROJECT_SOURCE_DIR}/src/FeatherFifo.hpp)
-target_include_directories(test PRIVATE ${PROJECT_SOURCE_DIR}/src/)
+add_executable(test test.cpp ${PROJECT_SOURCE_DIR}/include/FeatherFifo.hpp)
+target_include_directories(test PRIVATE ${PROJECT_SOURCE_DIR}/include/)
