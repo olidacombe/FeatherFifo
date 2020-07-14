@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstdint>
 
 template <class T = uint8_t, uint8_t N = 16>
