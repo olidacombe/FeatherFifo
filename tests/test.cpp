@@ -38,12 +38,12 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
       ff.push(TSample::A);
       ff.push(TSample::B);
       ff.push(TSample::C);
-      THEN("values are popped in fifo order")
+      THEN("values are popped in fifo order until empty")
       {
         REQUIRE(ff.pop() == TSample::A);
         REQUIRE(ff.pop() == TSample::B);
         REQUIRE(ff.pop() == TSample::C);
-        REQUIRE(!ff.empty());
+        REQUIRE(ff.empty());
       }
     }
 
@@ -62,7 +62,7 @@ SCENARIO("FeatherFifo acts as a small fifo ring-buffer", "[fifo][ring buffer]")
           REQUIRE(ff.pop() == TSample::C);
           REQUIRE(ff.pop() == TSample::A);
           REQUIRE(ff.pop() == TSample::B);
-          REQUIRE(!ff.empty());
+          REQUIRE(ff.empty());
         }
       }
     }

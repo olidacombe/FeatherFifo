@@ -40,6 +40,7 @@ public:
       throw 0;
     const T value = buffer[read_idx];
     inc_idx(read_idx);
+    size--;
     return value;
   };
 };
